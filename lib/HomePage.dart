@@ -1,7 +1,7 @@
 
-// ignore_for_file: file_names, prefer_const_constructors
+// ignore_for_file: file_names, prefer_const_constructors, duplicate_ignore
 
-import 'package:ex1/main.dart';
+import 'package:ex1/DisplayDetails.dart';
 import 'package:flutter/material.dart';
 
 
@@ -67,9 +67,14 @@ class _MyHomePageState extends State<MyHomePage> {
                           onChanged: (value) {
                             firstName = value;
                           },
-                          validator: (value) {},
+                          validator: (value) 
+                          {
+
+                          },
                           decoration: InputDecoration(
-                            border: OutlineInputBorder(),
+                            border: OutlineInputBorder(
+                              
+                            ),
                             labelText: "First Name",
                             hintText: "Enter your first name",
                             floatingLabelBehavior: FloatingLabelBehavior.auto,
@@ -108,12 +113,17 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                         SizedBox(height: 30),
                         TextFormField(
-                          keyboardType: TextInputType.emailAddress,
-                          onSaved: (newValue) => email = newValue,
-                          onChanged: (value) {
-                            email = value;
-                          },
-                          validator: (value) {},
+                            // decoration: InputDecoration(labelText: 'Password'),
+                            keyboardType: TextInputType.emailAddress,
+                            onFieldSubmitted: (value) {},
+                            obscureText: true,
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Enter a valid password!';
+                              }
+                              return null;
+                            },
+                          
                           decoration: InputDecoration(
                             border: OutlineInputBorder(),
                             labelText: "Email",
@@ -179,10 +189,21 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                         ),
                         SizedBox(height: 30),
-                        DefaultButton(
-                          text: "Save",
-                          press: () {
-                            if (_formKey.currentState!.validate()) {
+
+                            Container(  
+                                margin: EdgeInsets.all(25),  
+                                child: FlatButton
+                                (  
+                                child: Text('Save', 
+                                style: TextStyle(
+                                  fontSize: 20.0
+                                  ),
+                                  ),  
+                                color: Colors.pinkAccent,  
+                                textColor: Colors.white,  
+                                onPressed: () {
+                                            if (_formKey.currentState!.validate()) 
+                          {
                               Navigator.of(context).push(
                                 MaterialPageRoute(
                                   builder: (context) => DisplayDetails(
@@ -192,13 +213,13 @@ class _MyHomePageState extends State<MyHomePage> {
                                     gender: gender,
                                     phoneNumber: phoneNumber,
                                     address: address,
-                                    birthday: "${selectedDate.toLocal()}"
-                                        .split(' ')[0],
+                                    birthday: "${selectedDate.toLocal()}".split(' ')[0],
                                   ),
                                 ),
                               );
                             }
-                          },
+                            },  
+                          ),  
                         ),
                         SizedBox(height: 30),
                       ],
