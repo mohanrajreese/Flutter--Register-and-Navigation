@@ -7,22 +7,27 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Exercise 2',
-      theme: ThemeData(
+      theme: ThemeData
+      (
         primarySwatch: Colors.pink
       ),
-      home: MyHomePage(title: 'Enter Your Data'),
+      home: MyHomePage(
+        title: 'Flutter Excercise'
+        ),
       debugShowCheckedModeBanner: false,
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
+  const MyHomePage({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
@@ -44,12 +49,16 @@ class _MyHomePageState extends State<MyHomePage> {
     final DateTime? picked = await showDatePicker(
         context: context,
         initialDate: selectedDate,
-        firstDate: DateTime(1990),
+        firstDate: DateTime(1980),
         lastDate: DateTime(2101));
-    if (picked != null && picked != selectedDate)
-      setState(() {
+    if (picked != null && picked != selectedDate) 
+    {
+      setState(() 
+      {
         selectedDate = picked;
-      });
+      }
+      );
+    }
   }
 
   @override
@@ -62,7 +71,9 @@ class _MyHomePageState extends State<MyHomePage> {
         child: SizedBox(
           width: double.infinity,
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20),
+            padding: EdgeInsets.symmetric(
+              horizontal: 20
+              ),
             child: SingleChildScrollView(
               child: Column(
                 children: [
@@ -230,7 +241,8 @@ class DisplayDetails extends StatefulWidget {
   final String? phoneNumber;
   final String? address;
   final String? birthday;
-  DisplayDetails(
+  // ignore: use_key_in_widget_constructors
+  const DisplayDetails(
     {
     this.firstname,
     this.lastname,
@@ -249,12 +261,17 @@ class DisplayDetails extends StatefulWidget {
 class _DisplayDetailsState extends State<DisplayDetails> 
 {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) 
+  {
     return Scaffold(
         appBar: AppBar(
           title: Text(
             "DISPLAY DETAILS",
-            style: TextStyle(color: Colors.white, fontSize: 26, fontWeight: FontWeight.bold,),
+            style: TextStyle(
+              color: Colors.white, 
+            fontSize: 26, 
+            fontWeight: FontWeight.bold,
+            ),
           ),
         ),
         body: Container(
@@ -273,40 +290,89 @@ class _DisplayDetailsState extends State<DisplayDetails>
               children: <Widget>[
                 ListTile(
                   title: Text('First Name - ${widget.firstname}',
-                      style: TextStyle(fontSize: 18.0)),
-                  subtitle: Text("", style: TextStyle(fontSize: 18.0)),
+                      style: TextStyle
+                      (
+                        fontSize: 18.0
+                        )
+                        ),
+                  subtitle: Text(
+                    "", style: TextStyle
+                    (
+                      fontSize: 18.0
+                      )
+                      ),
                 ),
                 ListTile(
                   title: Text('Last Name - ${widget.lastname}',
                       style: TextStyle(
                         fontSize: 18.0)
                         ),
-                  subtitle: Text('', style: TextStyle(fontSize: 18.0)),
+                  subtitle: Text(
+                    '', style: TextStyle
+                    (
+                      fontSize: 18.0
+                      )
+                      ),
                 ),
                 ListTile(
                   title: Text('Email - ${widget.email}',
-                      style: TextStyle(fontSize: 18.0)),
-                  subtitle: Text("", style: TextStyle(fontSize: 18.0)),
+                      style: TextStyle
+                      (
+                        fontSize: 18.0
+                        )
+                        ),
+                  subtitle: Text(
+                    "", style: TextStyle
+                    (
+                      fontSize: 18.0
+                      )
+                      ),
                 ),
                 ListTile(
                   title: Text('Phone Number - ${widget.phoneNumber}',
-                      style: TextStyle(fontSize: 18.0)),
-                  subtitle: Text('', style: TextStyle(fontSize: 18.0)),
+                      style: TextStyle
+                      (
+                        fontSize: 18.0
+                        )
+                        ),
+                  subtitle: Text(
+                    '', style: TextStyle(
+                      fontSize: 18.0
+                      )
+                      ),
                 ),
                 ListTile(
                   title: Text('Birthday - ${widget.birthday}',
                       style: TextStyle(fontSize: 18.0)),
-                  subtitle: Text('', style: TextStyle(fontSize: 18.0)),
+                  subtitle: Text(
+                    '', style: TextStyle(
+                      fontSize: 18.0
+                      )
+                      ),
                 ),
                 ListTile(
                   title: Text('Gender - ${widget.gender}',
-                      style: TextStyle(fontSize: 18.0)),
-                  subtitle: Text("", style: TextStyle(fontSize: 18.0)),
+                      style: TextStyle(
+                        fontSize: 18.0
+                        )
+                        ),
+                  subtitle: Text(
+                    "", style: TextStyle(
+                      fontSize: 18.0
+                      )
+                      ),
                 ),
                 ListTile(
                   title: Text('Address - ${widget.address}',
-                      style: TextStyle(fontSize: 18.0)),
-                  subtitle: Text("", style: TextStyle(fontSize: 18.0)),
+                      style: TextStyle(
+                        fontSize: 18.0
+                        )
+                        ),
+                  subtitle: Text(
+                    "", style: TextStyle(
+                      fontSize: 18.0
+                      )
+                      ),
                 ),
               ],
             ),
@@ -330,8 +396,12 @@ class DefaultButton extends StatelessWidget {
       width: double.infinity,
       height: 56,
       child: TextButton(
-        style: TextButton.styleFrom(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+        style: TextButton.styleFrom
+        (
+          shape: RoundedRectangleBorder
+          (
+            borderRadius: BorderRadius.circular(5)
+            ),
           primary: Colors.white,
           backgroundColor: Colors.blue,
         ),
